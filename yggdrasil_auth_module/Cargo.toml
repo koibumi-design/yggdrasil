@@ -1,0 +1,16 @@
+[package]
+name = "yggdrasil_auth_module"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = {workspace = true}
+sea-orm = { workspace = true }
+async-trait = { workspace = true }
+serde = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+tracing = { workspace = true }
+bcrypt = "0.15.1"
+argon2 = "0.5.3"
+lettre = "0.11.8"

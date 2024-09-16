@@ -1,0 +1,30 @@
+[workspace]
+members = [
+    "yggdrasil_shop_module",
+    "yggdrasil_affaliate_module",
+    "yggdrasil_auth_module",
+    "yggdrasil_schedule_module"
+]
+resolver = "2"
+
+[workspace.dependencies]
+anyhow = "1.0"
+sea-orm = { version = "1.0.0-rc.5", features = [
+    "sqlx-postgres",
+    "runtime-tokio-rustls",
+    "macros",
+    "uuid",
+    "debug-print",
+    "with-uuid",
+    "with-chrono",
+    "postgres-array",
+    "with-rust_decimal"
+] }
+tokio = { version = "1.0", features = ["full"] }
+async-trait = "0.1"
+serde = { version = "1.0", features = ["derive"] }
+tracing = "0.1"
+chrono = "0.4"
+uuid = { version = "1.10", features = ["serde", "v4"] }
+rust_decimal = "1.36"
+rust_decimal_macros = "1.36"
