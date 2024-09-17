@@ -29,8 +29,7 @@ enum AffStat {
 #[async_trait::async_trait]
 impl MigrationTrait for Migration {
     async fn up(&self, manager: &SchemaManager) -> Result<(), DbErr> {
-        manager
-            .create_table(
+        manager.create_table(
             Table::create()
                 .table(AffGraph::Table)
                 .if_not_exists()
@@ -39,11 +38,10 @@ impl MigrationTrait for Migration {
                 .col(ColumnDef::new(AffGraph::To).uuid().not_null())
                 .col(ColumnDef::new(AffGraph::Reward).float().not_null())
                 .col(ColumnDef::new(AffGraph::Rate).float().not_null())
-                .col(ColumnDef::new(AffGraph::CreatedAt).timestamp().not_null().default("CURRENT_TIMESTAMP"))
+                .col(ColumnDef::new(AffGraph::CreatedAt).timestamp().not_null())
                 .to_owned()
         ).await?;
-        manager
-            .create_table(
+        manager.create_table(
             Table::create()
                 .table(AffStat::Table)
                 .if_not_exists()
