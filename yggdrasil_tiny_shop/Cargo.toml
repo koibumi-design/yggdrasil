@@ -1,5 +1,5 @@
 [package]
-name = "yggdrasil_shop_module"
+name = "yggdrasil_tiny_shop"
 version = "0.1.0"
 edition = "2021"
 

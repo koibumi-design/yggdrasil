@@ -1,5 +1,5 @@
 [package]
-name = "yggdrasil_affaliate_module"
+name = "yggdrasil_affaliate"
 version = "0.1.0"
 edition = "2021"
 

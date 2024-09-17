@@ -1,14 +1,13 @@
 [workspace]
 members = [
-    "yggdrasil_shop_module",
-    "yggdrasil_affaliate_module",
-    "yggdrasil_auth_module",
-    "yggdrasil_schedule_module"
+    "yggdrasil_tiny_shop",
+    "yggdrasil_affaliate",
+    "yggdrasil_auth",
+    "yggdrasil_schedule"
 ]
 resolver = "2"
 
 [workspace.dependencies]
-anyhow = "1.0"
 sea-orm = { version = "1.0.0-rc.5", features = [
     "sqlx-postgres",
     "runtime-tokio-rustls",

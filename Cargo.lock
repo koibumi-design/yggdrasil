@@ -69,12 +69,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "anyhow"
-version = "1.0.87"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "10f00e1f6e58a40e807377c75c6a7f97bf9044fab57816f2414e6f5f4499d7b8"
-
-[[package]]
 name = "argon2"
 version = "0.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2873,7 +2867,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "yggdrasil_affaliate_module"
+name = "yggdrasil_affaliate"
 version = "0.1.0"
 dependencies = [
  "async-trait",
@@ -2885,10 +2879,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "yggdrasil_auth_module"
+name = "yggdrasil_auth"
 version = "0.1.0"
 dependencies = [
- "anyhow",
  "argon2",
  "async-trait",
  "bcrypt",
@@ -2901,7 +2894,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "yggdrasil_schedule_module"
+name = "yggdrasil_schedule"
 version = "0.1.0"
 dependencies = [
  "chrono",
@@ -2909,7 +2902,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "yggdrasil_shop_module"
+name = "yggdrasil_tiny_shop"
 version = "0.1.0"
 dependencies = [
  "async-trait",
