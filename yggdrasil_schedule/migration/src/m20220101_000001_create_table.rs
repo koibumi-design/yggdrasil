@@ -3,39 +3,45 @@ use sea_orm_migration::{prelude::*, schema::*};
 #[derive(DeriveMigrationName)]
 pub struct Migration;
 
+#[derive(DeriveIden)]
+enum ScheduledEvent {
+    #[sea_orm(iden = "ygg_schedule__scheduled_event")]
+    Table,
+    Id,
+    Time,
+    Payload,
+    HaveBeenExecuted,
+    Consumer,
+    CreatedAt,
+}
+
 #[async_trait::async_trait]
 impl MigrationTrait for Migration {
     async fn up(&self, manager: &SchemaManager) -> Result<(), DbErr> {
-        // Replace the sample below with your own migration scripts
-        todo!();
-
-        manager
-            .create_table(
-                Table::create()
-                    .table(Post::Table)
-                    .if_not_exists()
-                    .col(pk_auto(Post::Id))
-                    .col(string(Post::Title))
-                    .col(string(Post::Text))
-                    .to_owned(),
-            )
-            .await
+        manager.create_table(
+            Table::create()
+                .table(ScheduledEvent::Table)
+                .if_not_exists()
+                .col(ColumnDef::new(ScheduledEvent::Id).integer().not_null().auto_increment().primary_key())
+                .col(ColumnDef::new(ScheduledEvent::Time).timestamp().not_null())
+                .col(ColumnDef::new(ScheduledEvent::Payload).text().not_null())
+                .col(ColumnDef::new(ScheduledEvent::HaveBeenExecuted).boolean().not_null().default(false))
+                .col(ColumnDef::new(ScheduledEvent::Consumer).string().not_null())
+                .col(ColumnDef::new(ScheduledEvent::CreatedAt).timestamp().not_null())
+                .to_owned()
+        ).await?;
+        manager.create_index(
+            Index::create()
+                .table(ScheduledEvent::Table)
+                .name("ygg_schedule__scheduled_event_time_index")
+                .col(ScheduledEvent::Time)
+                .to_owned()
+        ).await?;
+        Ok(())
     }
 
     async fn down(&self, manager: &SchemaManager) -> Result<(), DbErr> {
-        // Replace the sample below with your own migration scripts
-        todo!();
-
-        manager
-            .drop_table(Table::drop().table(Post::Table).to_owned())
-            .await
+        manager.drop_table(Table::drop().table(ScheduledEvent::Table).to_owned()).await?;
+        Ok(())
     }
-}
-
-#[derive(DeriveIden)]
-enum Post {
-    Table,
-    Id,
-    Title,
-    Text,
 }

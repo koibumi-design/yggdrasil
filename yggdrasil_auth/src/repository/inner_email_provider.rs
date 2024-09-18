@@ -12,6 +12,7 @@ pub struct Model {
     #[sea_orm(primary_key)]
     pub email: String,
 
+    #[sea_orm(column_type="Text")]
     pub password_hash: String,
 
     #[sea_orm(index, unique)]
