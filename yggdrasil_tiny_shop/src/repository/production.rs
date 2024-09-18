@@ -20,6 +20,7 @@ pub struct Model {
     pub infinity_stock: bool,
     #[sea_orm(column_type = "Text")]
     pub description: String,
+    #[sea_orm(column_type = "Text")]
     pub content: String,
     #[sea_orm(indexed)]
     pub labels: Vec<String>,
